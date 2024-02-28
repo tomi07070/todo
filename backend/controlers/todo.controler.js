@@ -38,6 +38,19 @@ export const GetTodo = async (req,res) => {
     }
 }
 
+export const GetOneTodo = async (req,res) => {
+    try {
+        const {id} = req.params
+        
+        const todo = await Todo.findById(id)
+        return res.status(200).json({data: todo})
+
+    } catch (error) {
+        console.log(error)
+        return res.status(400).json({message: "internal server error"})
+    }
+}
+
 export const UpdateTodo = async (req,res) => {
     try {
         if (
@@ -49,7 +62,7 @@ export const UpdateTodo = async (req,res) => {
         }
         const {id} = req.params
 
-        const result = await Todo.findByIdAndUpdate(id, req.body)
+        const result = await Todo.findByIdAndUpdate(id, req.body, {new: true})
         if (!result) {
             return res.status(400).json({message: "Todo not found"})
         }
