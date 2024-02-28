@@ -1,40 +1,42 @@
-import React from 'react'
-import { useState,  } from 'react'
-import axios from 'axios'
-import { useParams, useNavigate } from 'react-router-dom'
-
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Delete = () => {
-  const { id } = useParams()
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
-  
-  const HandleDeleteTodo = () => {
-    setLoading(true)
-    axios
-      .delete(`http://localhost:5000/delete/${id}`)
-      .then(()=> {
-        setLoading(true)
-        navigate('/')
-      })
-      .catch((err) => {
-        setLoading(false)
-        console.log(err)
-      })
-  }
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const { _id } = useParams();
 
+  const handleDelete = () => {
+    setLoading(true);
+    axios
+      .delete(`http://localhost:5000/todos/delete/${_id}`)
+      .then(() => {
+        setLoading(false);
+        navigate('/');
+      })
+      .catch((error) => {
+        setLoading(false);
+        // alert('An error happened. Please Chack console');
+        console.log(error);
+      });
+  };
+  
   return (
-    <>
-      <div>
-        <div><h1>Are you shure you want to delete this Todo?</h1></div>
-        <div>
-          <button onClick={HandleDeleteTodo}>
-            delete
-          </button>
-        </div>
+    <div className='p-4'>
+      <h1 className='text-3xl my-4'>Delete todo</h1>
+      <div className='flex flex-col items-center border-2 border-sky-400 rounded-xl xl:w-[600px] p-8 mx-auto'>
+        <h3 className='text-2xl'>Are You Sure You want to delete this todo?</h3>
+
+        <button
+          className='p-4 bg-red-600 text-white m-8 w-full'
+          onClick={handleDelete}
+        >
+          Yes, Delete it
+        </button>
       </div>
-    </>
+    </div>
   )
 }
 
-export default Delete
+export default Delete;

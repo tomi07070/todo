@@ -3,7 +3,7 @@ import BackButton from '../components/BackButton'
 import { useState } from 'react'
 import axios from 'axios'
 import toast, {Toaster} from 'react-hot-toast'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 const Create = () => {
@@ -28,15 +28,8 @@ const Create = () => {
         setLoading(false)
         console.log("todo created succesfully")
         toast.success('Todo created succesfully')
-        setTimeout(()=> {
-          try {
             navigate('/')
             console.log("it worked")
-          } catch (error) {
-            console.log(error)
-
-          }
-        }, 2000)
       })
       .catch((err)=>{
         setLoading(false)
@@ -48,37 +41,46 @@ const Create = () => {
   return (
     <>
       <Toaster/>
-      <div>
-        <div>
+      <div className='flex justify-center'>
+        <div className='absolute left-10 top-5'>
           <BackButton/>
         </div>
-        <div>
-          <form>
-            <div>
+        <div className=''>
+          <form className='mt-[100px] border-2 border-white xl:w-[400px] w-[300px] h-[400px]'>
+            <div className='mb-[30px] xl:ml-[100px] ml-[50px] mt-[20px]'>
               <input 
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+                placeholder='Title'
+                className=' text-white placeholder:text-white p-2 rounded-xl'
                  />
             </div>
-            <div>
+            <div className='mb-[30px] xl:ml-[100px] ml-[50px]'>
               <input 
                 type="text" 
                 value={desc}
                 onChange={(e) => setDesc(e.target.value)}
+                placeholder='Description'
+                className=' text-white placeholder:text-white p-2 rounded-xl'
               />
             </div>
-            <div>
+            <div className='mb-[30px] xl:ml-[100px] ml-[50px]'>
               <input 
                 type='date'
                 value={expires}
-                onChange={(e) => setExpires(e.target.value)} 
+                onChange={(e) => setExpires(e.target.value)}
+                placeholder='Expires'
+                className=' text-white placeholder:text-white p-2 rounded-xl w-[200px]' 
               />
             </div>
-            <div>
-              <button type="submit" onClick={HandleSaveTodo}>
-                Create
-              </button>
+            <div className='flex justify-center'>
+              <Link to='/'>
+                <button type="submit" className='btn btn-outline btn-success' onClick={HandleSaveTodo}>
+                  Create
+                </button>
+              </Link>
+             
             </div>
           </form>
         </div>

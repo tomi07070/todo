@@ -5,7 +5,7 @@ const BackButton = () => {
   return (
     <>
         <div>
-            <Link to='/'><i class="fa-solid fa-arrow-left"></i></Link>
+            <Link to='/'><i className="fa-solid fa-arrow-left text-3xl"></i></Link>
         </div>
     </>
   )

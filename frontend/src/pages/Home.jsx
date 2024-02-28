@@ -24,9 +24,9 @@ const Home = () => {
   }, [])
     return (
     <>
-      <TodoCard todos={todos}></TodoCard>
-        <div className=' mr-10 mt-5 absolute top-0 left-[1450px]'>
-            <Link to={'/create'}><i className="fa-solid fa-plus text-3xl"></i></Link>
+        <TodoCard todos={todos}></TodoCard>
+        <div className=' mr-10 mt-7 absolute top-0 xl:left-[1400px] md:left-[750px] left-[270px]'>
+            <Link to={'/create'}><i className="fa-solid fa-plus text-5xl"></i></Link>
         </div>
     </>
   )
