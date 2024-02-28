@@ -43,7 +43,7 @@ export const GetOneTodo = async (req,res) => {
         const {id} = req.params
         
         const todo = await Todo.findById(id)
-        return res.status(200).json({data: todo})
+        return res.status(200).json({todo})
 
     } catch (error) {
         console.log(error)
@@ -62,7 +62,8 @@ export const UpdateTodo = async (req,res) => {
         }
         const {id} = req.params
 
-        const result = await Todo.findByIdAndUpdate(id, req.body, {new: true})
+
+        const result = await Todo.findByIdAndUpdate(id, req.body)
         if (!result) {
             return res.status(400).json({message: "Todo not found"})
         }
@@ -77,9 +78,9 @@ export const UpdateTodo = async (req,res) => {
 
 export const DeleteTodo = async (req,res) => {
     try {
-        const {id} = req.params
+        const { id } = req.params
 
-        const result = await Todo.findByIdAndDelete(id)
+        const result = await Todo.findOneAndDelete(id)
         if (!result) {
             return res.status(404).json({message: "todo not found"})
         }

@@ -13,10 +13,10 @@ import { useNavigate, useParams } from 'react-router-dom';
   useEffect(() => {
     setLoading(true);
     axios.get(`http://localhost:5000/todos/${id}`)
-    .then((response) => {
-        setTitle(response.data.title);
-        setDesc(response.data.desc)
-        setExpires(response.data.expires)
+    .then((res) => {
+        setTitle(res.data.title);
+        setDesc(res.data.desc)
+        setExpires(res.data.expires)
         setLoading(false);
       }).catch((error) => {
         setLoading(false);
@@ -32,14 +32,13 @@ import { useNavigate, useParams } from 'react-router-dom';
     };
     setLoading(true);
     axios
-      .put(`http://localhost:5555/todos/update/${id}`, data)
+      .put(`http://localhost:5000/todos/update/${id}`, data)
       .then(() => {
         setLoading(false);
         navigate('/');
       })
       .catch((error) => {
         setLoading(false);
-        // alert('An error happened. Please Chack console');
         console.log(error);
       });
   };

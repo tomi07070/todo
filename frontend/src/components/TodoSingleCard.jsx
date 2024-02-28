@@ -14,8 +14,8 @@ const TodoSingleCard = ({todo}) => {
                 <h2 className="card-title">{todo.title}</h2>
                 <p>{todo.desc}</p>   
         <div>
-            <Link to='/update'><i className="fa-solid fa-pen-to-square btn btn-info"></i></Link>
-            <Link to='/delete'><i className="fa-solid fa-trash btn m-4 btn-error"></i></Link>
+            <Link to={`/todos/update/${todo._id}`}><i className="fa-solid fa-pen-to-square btn btn-info"></i></Link>
+            <Link to={`/todos/delete/${todo._id}`}><i className="fa-solid fa-trash btn m-4 btn-error"></i></Link>
         </div>
         <div className="card-actions justify-end">
             <button className="span">{formattedDate}</button>

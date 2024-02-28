@@ -13,7 +13,6 @@ const TodoModel = new Schema(
        expires: {
         type: Date,
         required: true,
-        get: (expires) => moment(expires).format("YYYY-MM-DD HH:mm:ss")
        }
     })
 

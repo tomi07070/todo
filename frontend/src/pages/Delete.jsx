@@ -6,6 +6,7 @@ const Delete = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { _id } = useParams();
+  console.log("ID from params:", _id);
 
   const handleDelete = () => {
     setLoading(true);
@@ -17,7 +18,6 @@ const Delete = () => {
       })
       .catch((error) => {
         setLoading(false);
-        // alert('An error happened. Please Chack console');
         console.log(error);
       });
   };

@@ -12,8 +12,8 @@ function App() {
     <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/create' element={<Create></Create>}></Route>
-        <Route path='/update' element={<Update></Update>}></Route>
-        <Route path='/delete' element={<Delete></Delete>}></Route>
+        <Route path='/todos/update/:id' element={<Update></Update>}></Route>
+        <Route path='/todos/delete/:id' element={<Delete></Delete>}></Route>
     </Routes>
     </>
   )
